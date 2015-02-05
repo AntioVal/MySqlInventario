@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b22e1545-f2e3-4751-8870-5abd8631335b">
+	<property name="ireport.zoom" value="1.2100000000000029"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="220"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="741" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="23" y="76" width="522" height="215" uuid="d92722ec-cada-4a61-8c55-cd9fe59830bd"/>
+			</rectangle>
+			<line>
+				<reportElement x="0" y="360" width="572" height="2" forecolor="#CCCCCC" uuid="3c20cd65-3c72-4917-8897-8450ae0875d3"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="44" y="97" width="138" height="12" uuid="646727a8-e3da-4ef1-b9d0-84d223af2356"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[NOMBRE DEL SOLICITANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="116" width="99" height="12" uuid="06bb399f-4e5c-4135-998d-b584cd52da6f"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[SE AUTORIZA LA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="394" y="97" width="41" height="12" uuid="2b7d42b8-20f8-48f1-99c6-7d7ef823d9d8"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="435" y="97" width="110" height="12" uuid="583d484a-fb52-4b62-9b99-1c3eb05c2325"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="44" y="150" width="75" height="12" uuid="7b0f430f-279c-4b2c-bfb0-be7999471d0a"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[DESCRIPCIÓN:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="239" width="99" height="12" uuid="24c47024-3a2b-4f25-8ece-90b4cf27c5d3"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[ORIGEN / DESTINO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="255" width="89" height="12" uuid="9caea98a-7992-4729-b05a-e722f00a4b54"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[PROPIETARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="271" width="89" height="12" uuid="b8d4e787-552f-404e-aeb9-7a015b729fc9"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[PROPIETARIO]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement x="75" y="301" width="126" height="52" uuid="95584966-39ea-4aa4-b88d-9a1ac40ed1c4"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="75" y="341" width="126" height="10" uuid="e074cd52-607b-4e14-9f88-65ffcce9596a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[SOLICITANTE]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement x="216" y="301" width="126" height="52" uuid="66341c68-a790-4edf-9bcc-1d693a7437b8"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="216" y="341" width="126" height="10" uuid="c0f10b11-2a35-4d13-b364-b82757ad97cf"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[JEFE DE ÁREA SOLICITANTE]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement x="356" y="301" width="126" height="52" uuid="c9418c3a-b004-4dec-982d-5b264863af29"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="356" y="341" width="126" height="10" uuid="c48bc66a-f896-40b5-8fd2-e63fabdb2cbf"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[VIGILANCIA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+</jasperReport>

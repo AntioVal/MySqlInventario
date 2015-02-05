@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="147318b2-3af5-4277-aa7c-adf21f52086a">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="clave_contrato" class="java.lang.String"/>
+	<parameter name="fecha_liquidacion" class="java.lang.String"/>
+	<parameter name="nombre_cliente" class="java.lang.String"/>
+	<parameter name="imagen_Fidei" class="java.lang.String"/>
+	<parameter name="imagen_SME" class="java.lang.String"/>
+	<parameter name="nombre_archivo" class="java.lang.String"/>
+	<parameter name="status" class="java.lang.String"/>
+	<parameter name="persona_elabora" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select contratos.nombre_cliente ,contratos.domicilio_fiscal,contratos.RFC,contratos.clave_contrato,
+ contratos.grupo,h.fecha_liquidacion,l.nombre_empleado , l.apellidoP_empleado , l.apellidoM_empleado ,
+ bancos.abreviacion , l.cuenta_deposito , cast(l.importe_liquidacion as float) as importe_liquidacion
+ from movimientos_h h , movimientos l , contratos contratos , cuentas_banco cuentas, bancosABM bancos
+ where h.clave_contrato = l.clave_contrato
+ and l.clave_contrato = contratos.clave_contrato
+ and h.fecha_liquidacion = l.fecha_liquidacion
+ and h.nombre_archivo=l.nombre_archivo
+ and contratos.cuenta_origen = cuentas.cuenta_origen
+ and l.clave_banco= bancos.clave
+ and contratos.clave_contrato = $P{clave_contrato}
+ and l.fecha_liquidacion = $P{fecha_liquidacion}
+ and contratos.nombre_cliente = $P{nombre_cliente}
+ and h.nombre_archivo = $P{nombre_archivo}
+ and l.tipo_movimiento = 2  and contratos.status = 'A'
+ and cuentas.status = 'A'
+ and h.status = $P{status}
+order by l.nombre_empleado asc]]>
+	</queryString>
+	<field name="nombre_cliente" class="java.lang.String"/>
+	<field name="domicilio_fiscal" class="java.lang.String"/>
+	<field name="RFC" class="java.lang.String"/>
+	<field name="clave_contrato" class="java.lang.String"/>
+	<field name="grupo" class="java.lang.String"/>
+	<field name="fecha_liquidacion" class="java.sql.Timestamp"/>
+	<field name="nombre_empleado" class="java.lang.String"/>
+	<field name="apellidoP_empleado" class="java.lang.String"/>
+	<field name="apellidoM_empleado" class="java.lang.String"/>
+	<field name="abreviacion" class="java.lang.String"/>
+	<field name="cuenta_deposito" class="java.lang.String"/>
+	<field name="importe_liquidacion" class="java.lang.Double"/>
+	<variable name="sumaTotal" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{importe_liquidacion}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="246" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="-3" width="278" height="65" uuid="a7b7c1a5-80fd-4aa2-92fb-271d067ef2fe"/>
+				<imageExpression><![CDATA[$P{imagen_SME}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="397" y="-3" width="158" height="65" uuid="33fd8026-21b4-440b-83bd-4eb850efaf4f"/>
+				<imageExpression><![CDATA[$P{imagen_Fidei}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="214" y="235" width="169" height="11" uuid="e0579bc8-2057-4e47-9fd7-dc5763191420"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BANCO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="482" y="235" width="61" height="11" uuid="0694b266-3275-40a1-a9c9-99dc8f5e30dc"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IMPORTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="235" width="200" height="11" uuid="39ee22ce-5637-41ac-915f-367a2722a611"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRE DEL FIDEICOMISARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="383" y="235" width="99" height="11" uuid="88e8306b-ae05-4d0e-80c7-8572e82cc86f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLABE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="14" y="245" width="528" height="1" uuid="a1cb2e81-c111-4bd5-a86f-54fdbd2401d3"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="62" width="555" height="18" forecolor="#D60D0D" uuid="5639274e-0c94-40e8-adf6-958c0fff0d89"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ORDEN DE LIQUIDACIÓN DE FIDEICOMISO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="80" width="555" height="20" forecolor="#D60D0D" uuid="4ef169bf-69c8-45e6-b21a-da6810924988"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BANCOMER A OTROS BANCOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="110" width="555" height="14" uuid="bad9e59d-ada1-4bc6-9409-8ea4d8f94ca3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INFORMACIÓN GENERAL DEL FIDEICOMITENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="124" width="104" height="10" uuid="e4c11697-5525-4d9c-87d2-fbb6afa28db4"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fideicomitente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="134" width="104" height="17" uuid="0fdf64b0-ce6c-4d52-901b-411673012b1a"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="151" width="104" height="10" uuid="c043dfc6-58dd-4f20-abd6-7340ba08a459"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RFC:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="161" width="104" height="10" uuid="95db4345-a4f5-497a-8be2-6d82d12eeec8"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Contrato:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="171" width="104" height="10" uuid="60e38187-04c2-48e2-b38d-b770442f8e90"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de Contrato:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="181" width="555" height="13" uuid="7cbdcac3-662c-4a4b-911b-bbc00e25ece8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATOS DE LIQUIDACIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="194" width="104" height="10" uuid="87d2bb44-289a-464f-acaa-df9d474cef5b"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Solicitud:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="204" width="104" height="10" uuid="2d74779c-5e97-4e26-b6b3-41c0bbb91cee"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Liquidación:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="104" y="124" width="397" height="10" backcolor="#B9F5D2" uuid="681cf4d3-53f8-44ad-8104-db87d49e669d"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="104" y="134" width="397" height="17" backcolor="#B9F5D2" uuid="ddd4a1ee-d4fb-4cba-8534-c37ff8b49cd4"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{domicilio_fiscal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="104" y="151" width="161" height="10" backcolor="#B9F5D2" uuid="2ae2eca6-ae7d-4b3b-9744-66f7740da226"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RFC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="104" y="161" width="161" height="10" backcolor="#B9F5D2" uuid="c30b2298-7ea6-46f8-93a0-fea34cf16a9d"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clave_contrato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="104" y="171" width="161" height="10" backcolor="#B9F5D2" uuid="13eef86e-88d9-4851-bbbe-47a677587fa2"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{grupo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement mode="Opaque" x="104" y="194" width="161" height="10" backcolor="#B9F5D2" uuid="3839968d-befb-4327-a57b-436b64d26de6"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="104" y="204" width="161" height="10" backcolor="#B9F5D2" uuid="58312356-152b-4e19-9dd1-b633a977bac4"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_liquidacion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="14" y="0" width="199" height="20" uuid="52b3e273-7de3-4186-8c1a-bf4d5a63f49b"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_empleado}+" " +$F{apellidoP_empleado}+" "+$F{apellidoM_empleado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="214" y="0" width="169" height="20" uuid="d005843e-471f-4632-8fa1-75292f0e7aff"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{abreviacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="384" y="0" width="100" height="21" uuid="09aad93f-bf0e-4e8f-9165-4b815cbd9403"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cuenta_deposito}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="13" y="20" width="530" height="1" uuid="d34de220-d3bb-457b-8c4b-9261ffee98b6"/>
+			</line>
+			<line>
+				<reportElement x="13" y="-1" width="1" height="21" uuid="db9bf008-5a8b-4cad-a5f0-b07c4601a8b8"/>
+			</line>
+			<line>
+				<reportElement x="213" y="0" width="1" height="20" uuid="c587ea37-ae47-471f-9a2b-99441fe34a14"/>
+			</line>
+			<line>
+				<reportElement x="383" y="0" width="1" height="20" uuid="4f7bb7f3-0002-425a-9c34-f5e09ae7fbfa"/>
+			</line>
+			<line>
+				<reportElement x="542" y="-1" width="1" height="21" uuid="962eee03-a149-4674-80a9-97f0e6f90061"/>
+			</line>
+			<line>
+				<reportElement x="483" y="-1" width="1" height="21" uuid="530561e2-96b2-478e-a636-89d425830358"/>
+			</line>
+			<textField pattern="#,##0.00">
+				<reportElement x="484" y="0" width="57" height="20" uuid="c3e05769-54ec-48d1-aacc-c6c4883d5a9d"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{importe_liquidacion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="34" splitType="Stretch">
+			<textField>
+				<reportElement x="421" y="11" width="80" height="20" uuid="998b1bb2-6a3c-467b-ac10-6a311f1ef220"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="501" y="11" width="40" height="20" uuid="6e9858ea-837e-4bc6-b501-597bd2114cb3"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="11" width="86" height="20" uuid="be270406-1525-4a04-beb2-7bd0cb2cbc8a"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="134" splitType="Stretch">
+			<rectangle>
+				<reportElement x="63" y="51" width="161" height="69" uuid="ead97233-5f7f-425c-9b5a-23c76b692b35"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="63" y="101" width="161" height="19" uuid="cb9cb4be-632c-4092-92b7-bfab9e1426ad"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ELABORÓ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="63" y="99" width="161" height="1" uuid="3395f259-a518-49a4-b28c-b84771d7c11d"/>
+			</line>
+			<rectangle>
+				<reportElement x="322" y="51" width="162" height="69" uuid="860e92e4-4203-4334-817f-789f2e7c878a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="322" y="100" width="162" height="20" uuid="d41f34f5-4e05-4f4a-ac3b-6587c24167a4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AUTORIZÓ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="322" y="100" width="162" height="1" uuid="f1c9a58d-6d73-4371-8f28-375cda5518ed"/>
+			</line>
+			<staticText>
+				<reportElement x="384" y="0" width="98" height="20" uuid="6933be1a-14b6-4bfa-929c-02c928c3a495"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL: $]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="63" y="79" width="161" height="20" uuid="2fc922a1-08d6-44a8-9fbd-9441af9987f1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{persona_elabora}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement mode="Opaque" x="482" y="0" width="61" height="20" backcolor="#BAF5D3" uuid="52880478-2751-4245-8176-c9be5416d21a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumaTotal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

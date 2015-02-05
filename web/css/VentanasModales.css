@@ -1,0 +1,197 @@
+/* 
+    Document   : VentanasModales
+    Created on : 2/09/2014, 04:59:33 PM
+    Author     : Luis-Valerio
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.modalmask {
+    position: fixed;
+    font-family: Arial, sans-serif;
+    top: -90px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+.modalmask:target {
+    opacity:1;
+    pointer-events: auto;
+}
+
+
+.modalbox{
+    width: 500px;
+    position: relative;
+    padding: 5px 20px 13px 20px;
+    background: #fff;
+    border-radius:3px;
+    -webkit-transition: all 500ms ease-in;
+    -moz-transition: all 500ms ease-in;
+    transition: all 500ms ease-in;
+    font-family: Cambria, Arial, Verdana, sans-serif;     
+}
+
+.modalboxBig{
+    width: 900px;
+    position: relative;
+    padding: 5px 20px 13px 20px;
+    background: #fff;
+    border-radius:3px;
+    -webkit-transition: all 500ms ease-in;
+    -moz-transition: all 500ms ease-in;
+    transition: all 500ms ease-in;
+    font-family: Cambria, Arial, Verdana, sans-serif; 
+}
+
+.movedown {
+    margin: 0 auto;    
+}
+.rotate {
+    margin: 10% auto;
+    -webkit-transform: scale(-5,-5);
+    transform: scale(-5,-5);
+}
+.resize {
+    margin: 10% auto;
+    width:0;
+    height:0;
+ 
+}
+.modalmask:target .movedown{       
+    margin:10% auto;
+}
+.modalmask:target .rotate{     
+    transform: rotate(360deg) scale(1,1);
+        -webkit-transform: rotate(360deg) scale(1,1);
+}
+ 
+.modalmask:target .resize{
+    width:500px;
+    height:200px;
+}
+
+.close {
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: 1px;
+    text-align: center;
+    top: 1px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius:3px;
+ 
+}
+ 
+.close:hover {
+    background: #FAAC58;
+    color:#222;
+}
+
+
+.tableScroll {
+  width: 700px;
+  table-layout: fixed;
+  border-collapse: collapse;
+  box-shadow: 3px 3px 3px #000000;
+  border:1px solid #000000;
+  
+  
+}
+
+.tableScroll table{
+    
+              border-spacing: 0;
+/*	width:  50px;
+	height: 50px;*/
+	margin:0px;padding:0px;
+        border-radius: 8px;
+}
+
+
+.tableScroll th {
+  /*text-decoration: underline;*/
+/*  	border:1px solid #ffffff;
+	border-width:1px 1px 1px 1px;*/
+/*	text-align:left;
+	font-size:12px;        */
+	/*padding:7px;*/
+        /*border-radius: 10px;*/
+	font-family:Arial;
+/*	font-weight:normal;
+	color:#000000;*/
+}
+.tableScroll th,
+.tableScroll td {
+  padding: 7px;
+  /*text-align: left;*/
+}
+.tableScroll thead {
+  background-color: #333333;
+  color: #fdfdfd;
+}
+.tableScroll thead tr {
+  display: ruby;
+  position: relative;  
+}
+.tableScroll tbody {
+  display: ruby;
+  overflow: auto;
+  width: 700px;
+  height: 300px;
+  font-family:Arial;
+  font-size: 12px;
+}
+.tableScroll tr:hover td{
+	background-color:#aad4ff;
+
+}
+
+.tableScroll tbody tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.autosuggest, .dropdown, .result {
+  position: absolute;
+  background:#fff;
+  margin:0;
+  padding:0;
+  border:0;
+  width:250px;
+}
+
+.autosuggest {
+  padding:4px;
+  border:1px solid #000;
+}
+
+.result {
+  width:260px;
+  list-style:none;
+}
+
+.result li {
+  padding:5px;
+  border:1px solid #000;
+  border-top:0;
+  cursor: pointer;
+}
+
+.result li:hover {
+  background:#333;
+  color:#fff;
+}

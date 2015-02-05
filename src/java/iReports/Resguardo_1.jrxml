@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Resguardo" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4eff450b-c2b2-495d-b8e9-2a21d396f921">
+	<property name="ireport.zoom" value="0.9075000000000019"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="1e179445-dfc9-4c2e-b796-da100db7dbe1"/>
+	<parameter name="logoGP" class="java.lang.String"/>
+	<field name="tipo" class="java.lang.String"/>
+	<field name="marca" class="java.lang.String"/>
+	<field name="modelo" class="java.lang.String"/>
+	<field name="noSerie" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="60" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="75" height="42" uuid="0cc7aa65-e69c-42c7-a28b-e3825cd7e573"/>
+				<imageExpression><![CDATA[$P{logoGP}]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="418" splitType="Stretch">
+			<rectangle radius="5">
+				<reportElement x="20" y="48" width="712" height="358" uuid="005480a2-651c-412c-a599-7971ace5fb40"/>
+			</rectangle>
+			<rectangle radius="5">
+				<reportElement x="19" y="1" width="713" height="36" uuid="c210be46-40bf-4de2-a2df-5bd2d00ea2a2"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="34" y="1" width="66" height="15" uuid="1f20f1d3-7a49-441c-8cce-2778bf386d53"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[USUARIO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="18" width="66" height="15" uuid="aa11566c-f894-4d1a-b9a6-fea3ff87f4a2"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AREA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="18" width="55" height="15" uuid="936244c8-3480-4b98-85e5-4e1188301748"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OFICINA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="553" y="3" width="48" height="15" uuid="06c2ffb6-f1d7-42b1-a957-bdbd0b5c5778"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FOLIO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="553" y="18" width="48" height="15" uuid="e16b3e14-0bd0-4cb0-8e8b-26261b20d81f"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA:]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="601" y="18" width="121" height="15" uuid="2bd836a4-cda0-4a4c-abb4-ebe56e7ee42e"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="33" y="64" width="622" height="15" uuid="9b81c8f1-4385-4382-84dd-885347497ccd"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[El área de Tecnologías de la información hace entrega del equipo que se describe a continuación, en buen funcionamiento:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="33" y="90" width="406" height="1" uuid="85370a4a-49d3-4991-b66c-d65f40cd7a02"/>
+			</line>
+			<line>
+				<reportElement x="33" y="91" width="1" height="14" uuid="8f6d5729-18ad-4876-afab-d2522a8fb4d5"/>
+			</line>
+			<line>
+				<reportElement x="133" y="90" width="1" height="15" uuid="b5840925-8af2-4045-8dce-a8d23aaa1dc6"/>
+			</line>
+			<line>
+				<reportElement x="199" y="91" width="1" height="14" uuid="a76d3316-47de-4908-9b5d-70ef5140352f"/>
+			</line>
+			<line>
+				<reportElement x="328" y="91" width="1" height="14" uuid="6d4fc402-bc3c-4718-a6bc-5e61be6683da"/>
+			</line>
+			<line>
+				<reportElement x="439" y="91" width="1" height="14" uuid="0c763408-e8ea-4441-8c9a-8b8a48dd861c"/>
+			</line>
+			<line>
+				<reportElement x="33" y="105" width="407" height="1" uuid="3f605b4b-ae56-448d-a05e-7762a1f6f241"/>
+			</line>
+			<staticText>
+				<reportElement x="527" y="116" width="153" height="15" uuid="e99dc979-a623-4375-8773-1b7f96f89b44"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[ACTUALIZACION DE EQUIPOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="128" width="103" height="28" uuid="9a42135d-21ed-448b-83f1-fd3245c9113c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[ULTIMA FECHA DE ACTUALIZACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="605" y="132" width="108" height="24" uuid="c78a1a4e-c9bc-47f5-87ea-dd657391def4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[FIRMA DE CONFORMIDAD]]></text>
+			</staticText>
+			<line>
+				<reportElement x="498" y="114" width="215" height="1" uuid="5f598ea8-9f54-42b7-bae3-9ce2e1f3bcc5"/>
+			</line>
+			<line>
+				<reportElement x="497" y="129" width="216" height="1" uuid="a98f3b34-e2db-4311-81c1-29b67becd313"/>
+			</line>
+			<line>
+				<reportElement x="497" y="114" width="1" height="217" uuid="346e12ca-f3b3-47ef-99d5-24032568728a"/>
+			</line>
+			<line>
+				<reportElement x="713" y="114" width="1" height="217" uuid="f6547a7e-a1a1-4f65-a241-728c537091f6"/>
+			</line>
+			<line>
+				<reportElement x="498" y="156" width="215" height="1" uuid="53fe4b09-9c1a-4446-a497-208a570b754b"/>
+			</line>
+			<line>
+				<reportElement x="606" y="130" width="1" height="201" uuid="a6cdd9d9-be52-47d1-a4c1-16a86a7dd4c4"/>
+			</line>
+			<line>
+				<reportElement x="498" y="213" width="216" height="1" uuid="bc182fd5-579d-4e3a-8f2b-0e32237928ca"/>
+			</line>
+			<line>
+				<reportElement x="497" y="276" width="217" height="1" uuid="6f7d70f8-c87c-48d5-8f25-67de50bdccee"/>
+			</line>
+			<line>
+				<reportElement x="497" y="331" width="217" height="1" uuid="fc9fb273-376b-4117-8f3f-59b69aef803d"/>
+			</line>
+			<textField>
+				<reportElement x="34" y="91" width="99" height="14" uuid="1dd44c9c-17b2-4dc2-8e88-0ac901c10e41"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="134" y="90" width="65" height="15" uuid="826f7ed7-d105-46a1-bb8c-43768c52e6a2"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{marca}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="199" y="90" width="129" height="14" uuid="1064f296-a362-4a50-b01d-5dc561fde62e"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{modelo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="329" y="90" width="110" height="14" uuid="fcbd9ba0-d992-478b-9488-3a68a7317764"/>
+				<textFieldExpression><![CDATA[$F{noSerie}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="31" y="175" width="451" height="90" uuid="2a6cffff-b56c-46c6-9d28-ca87d248d2a5"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[A partir de este momento, el usuario asume la responsabilidad con respecto al buen uso del equipo, entendiendo por buen uso aquel que se le brinde exclusivamente para su  actividad a favor de Grupo Proyectos, correspondiendo únicamente al área de Tecnologías de la Información el mantenimiento preventivo y correctivo e instalación de programas que se requieran para realizar sus actividades laborales.
+
+Esta responsiva estará vigente a partir de la fecha indicada en la parte superior y hasta que sea devuelto el mismo, este documento deberá sustituirse en caso de algún cambio físico en el equipo.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="277" width="211" height="15" uuid="e0771cf5-3786-4df3-9ad5-c962cd21878d"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCRIPCION DEL EQUIPO ENTREGADO: ]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="94" splitType="Stretch">
+			<rectangle radius="5">
+				<reportElement x="47" y="9" width="172" height="73" uuid="4f8722de-48c8-4d25-a7ec-02fb43cda6c7"/>
+			</rectangle>
+			<rectangle radius="5">
+				<reportElement x="535" y="9" width="172" height="73" uuid="2a246203-c2d8-4880-84c3-8873538530e3"/>
+			</rectangle>
+			<rectangle radius="5">
+				<reportElement x="282" y="9" width="172" height="73" uuid="74e79c7c-c229-43ea-a692-b11b09bd0672"/>
+			</rectangle>
+			<line>
+				<reportElement x="292" y="56" width="152" height="1" uuid="5fd21601-7985-406b-8474-b8cc568603fd"/>
+			</line>
+			<staticText>
+				<reportElement x="294" y="57" width="147" height="32" uuid="05ab108c-1c51-4184-b217-ad6902c3fa32"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[ING. RAFAEL BELLO PEREZ SOPORTE TECNICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="282" y="12" width="172" height="15" uuid="512916c9-6b10-4754-b142-0dfdbf313da9"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[TECNOLOGÍAS DE INFORMACIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="535" y="12" width="172" height="15" uuid="98556fee-cf4b-494b-b6c7-a6e141dc0c96"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[TECNOLOGÍAS DE INFORMACIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="545" y="56" width="147" height="32" uuid="8666abca-e74a-418b-8619-56cf13d40bb2"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[FERNANDO CARDENAS HERRERA GERENTE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="546" y="55" width="147" height="1" uuid="0edc34b1-9a6d-406a-a040-3c39b622f6ac"/>
+			</line>
+			<line>
+				<reportElement x="58" y="57" width="147" height="1" uuid="fcb04d36-0dec-48de-9725-c27357c35e3c"/>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>

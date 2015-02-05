@@ -1,0 +1,46 @@
+/* 
+    Document   : Buscar
+    Created on : 23/01/2014, 10:25:51 AM
+    Author     : luis-valerio
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.tablaNuevo{
+    
+    border-radius: 5px;
+    background-color: #dfb0f0;
+    
+}
+
+.buttonNuevo{
+border:1px solid #981698; -webkit-border-radius: 10px; -moz-border-radius: 10px;border-radius: 10px;font-size:16px;
+font-family:arial; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;font-weight:bold; color: #000000;
+ background-color: #C91DC9; background-image: -webkit-gradient(linear, left top, left bottom, from(#C91DC9), to(#B81A98));
+ background-image: -webkit-linear-gradient(top, #C91DC9, #B81A98);
+ background-image: -moz-linear-gradient(top, #C91DC9, #B81A98);
+ background-image: -ms-linear-gradient(top, #C91DC9, #B81A98);
+ background-image: -o-linear-gradient(top, #C91DC9, #B81A98);
+ background-image: linear-gradient(to bottom, #C91DC9, #B81A98);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#C91DC9, endColorstr=#B81A98);
+}
+
+.buttonNuevo:hover{
+ border:1px solid #701070;
+ background-color: #6E106E; background-image: -webkit-gradient(linear, left top, left bottom, from(#6E106E), to(#8b1473));
+ background-image: -webkit-linear-gradient(top, #6E106E, #8b1473);
+ background-image: -moz-linear-gradient(top, #6E106E, #8b1473);
+ background-image: -ms-linear-gradient(top, #6E106E, #8b1473);
+ background-image: -o-linear-gradient(top, #6E106E, #8b1473);
+ background-image: linear-gradient(to bottom, #6E106E, #8b1473);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6E106E, endColorstr=#8b1473);
+}
+
+.TituloNuevo{
+    font-family: Cambria;
+    font-size:24px;
+    color: #3E0447;
+    font-weight:bold;
+}

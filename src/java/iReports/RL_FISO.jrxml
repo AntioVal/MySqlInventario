@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0d12701b-af22-4eb2-a444-d9bb85e655df">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="importe_M1" class="java.lang.String"/>
+	<parameter name="importe_M2" class="java.lang.String"/>
+	<parameter name="importe_M3" class="java.lang.String"/>
+	<parameter name="importe_M4" class="java.lang.String"/>
+	<parameter name="importe_M5" class="java.lang.String"/>
+	<parameter name="importe_total_MXP" class="java.lang.String"/>
+	<parameter name="importe_AFI" class="java.lang.String"/>
+	<parameter name="importe_IVA" class="java.lang.String"/>
+	<parameter name="importe_HF" class="java.lang.String"/>
+	<parameter name="SPR_MXP" class="java.lang.String"/>
+	<parameter name="imagen_SME" class="java.lang.String"/>
+	<parameter name="imagen_Fidei" class="java.lang.String"/>
+	<parameter name="clave_contrato" class="java.lang.String"/>
+	<parameter name="fecha_liquidacion" class="java.lang.String"/>
+	<parameter name="total_movs_tipo1" class="java.lang.String"/>
+	<parameter name="total_movs_tipo2" class="java.lang.String"/>
+	<parameter name="total_movs_tipo3" class="java.lang.String"/>
+	<parameter name="total_movs_tipo4" class="java.lang.String"/>
+	<parameter name="total_movs_tipo5" class="java.lang.String"/>
+	<parameter name="total_movimientos" class="java.lang.String"/>
+	<parameter name="fecha_carga" class="java.lang.String"/>
+	<parameter name="fecha_hoy" class="java.lang.String"/>
+	<parameter name="nombre_archivo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select nombre_cliente
+from contratos
+where clave_contrato=$P{clave_contrato}]]>
+	</queryString>
+	<field name="nombre_cliente" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="216" splitType="Stretch">
+			<image>
+				<reportElement x="33" y="34" width="201" height="78" uuid="0af9475e-dfa2-4f6c-9101-781aade6df94"/>
+				<imageExpression><![CDATA[$P{imagen_SME}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="361" y="23" width="158" height="62" uuid="0387adb9-822b-480e-9026-fafe2eb911d4"/>
+				<imageExpression><![CDATA[$P{imagen_Fidei}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="54" y="163" width="445" height="18" uuid="b3a07277-127c-4d83-bca8-a7254a168b64"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Liquidación del "+ $P{fecha_liquidacion}+ " Contrato " + $P{clave_contrato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="128" width="555" height="20" uuid="04cfeaf5-01cf-47e4-b56a-d13917a39cd5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_cliente}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="497">
+			<textField pattern="#,##0.00">
+				<reportElement mode="Transparent" x="382" y="22" width="122" height="15" backcolor="#FFFFFF" uuid="9c9d5125-725a-4489-bd28-b6f1a1108501"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Double($P{importe_M1})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="44" y="22" width="287" height="15" uuid="e5dfa148-c7b0-484c-9a14-2814df9baf9c"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Pagos a Terceros de Bancomer a Bancomer]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement mode="Transparent" x="382" y="38" width="122" height="15" backcolor="#FFFFFF" uuid="a70af04e-7dd8-4f88-9864-d19df2e5550a"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Double($P{importe_M2})]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement mode="Transparent" x="382" y="54" width="122" height="15" backcolor="#FFFFFF" uuid="1391e073-46f3-4938-81f6-1a8092dda706"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Double($P{importe_M3})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="44" y="54" width="287" height="15" uuid="71491171-baa8-4b0e-a752-2fc21363fefd"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Traspasos de Bancomer a TDD Banamex]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement mode="Transparent" x="382" y="70" width="122" height="15" backcolor="#FFFFFF" uuid="4db31516-01e0-4d97-9039-ced6f8e88d7f"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Double($P{importe_M4})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="44" y="70" width="287" height="15" uuid="42fa6e61-e2ce-42b4-8fb6-07a2dd1afa82"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Emisión de Cheques]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement mode="Transparent" x="382" y="86" width="122" height="16" backcolor="#FFFFFF" uuid="46b79a0d-d6d1-4dd7-b5aa-19422e8561ef"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Double($P{importe_total_MXP})]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="44" y="21" width="462" height="1" uuid="8ac84f8b-1b3f-4b2f-b033-3073548a0546"/>
+			</line>
+			<line>
+				<reportElement x="44" y="102" width="461" height="1" uuid="550c7d93-c7c9-4ca6-8e28-dee744c4798a"/>
+			</line>
+			<line>
+				<reportElement x="44" y="37" width="297" height="1" uuid="5b3d1ac2-c28e-4ad7-88b7-99cff11f984c"/>
+			</line>
+			<line>
+				<reportElement x="44" y="53" width="297" height="1" uuid="f7b2c0de-6c67-4925-8edc-42d86095c749"/>
+			</line>
+			<line>
+				<reportElement x="44" y="69" width="297" height="1" uuid="6f65ec5a-8817-40fa-8015-8aeac6f5a828"/>
+			</line>
+			<line>
+				<reportElement x="44" y="85" width="298" height="1" uuid="3e540324-8e70-4b91-bf15-facd086ea4f9"/>
+			</line>
+			<line>
+				<reportElement x="43" y="21" width="1" height="82" uuid="a5d74aae-6fbd-4840-9ec9-b3f0044da09c"/>
+			</line>
+			<line>
+				<reportElement x="505" y="22" width="1" height="81" uuid="f3177bb0-3e3b-4e45-af8f-414a5aa834ba"/>
+			</line>
+			<staticText>
+				<reportElement x="44" y="133" width="337" height="16" uuid="a8376485-8be5-4988-bb64-a130a1750e7a"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Administración Fiduciaria Integral]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement mode="Transparent" x="382" y="134" width="123" height="15" backcolor="#FFFFFF" uuid="f3628f74-3202-4ae8-83f4-373cd48436be"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Double($P{importe_AFI})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="44" y="149" width="337" height="15" uuid="c3ea2792-3b35-49fc-9fa8-e2190bbb8b25"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Impuesto al Valor Agregado ]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement mode="Transparent" x="382" y="149" width="123" height="15" backcolor="#FFFFFF" uuid="8c0e7d9f-2801-462a-8a99-105089069659"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Double($P{importe_IVA})]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement mode="Transparent" x="382" y="165" width="123" height="15" backcolor="#FFFFFF" uuid="1192f6f6-bf01-4d31-8bfb-e5ae49b69dbc"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Double($P{importe_HF})]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="43" y="133" width="463" height="1" uuid="9340c7d1-baa4-4eb5-a379-6a621c175475"/>
+			</line>
+			<line>
+				<reportElement x="43" y="149" width="338" height="1" uuid="8ef3e9f8-3833-4e30-880e-09e1f935471e"/>
+			</line>
+			<line>
+				<reportElement x="43" y="164" width="338" height="1" uuid="2856d760-8472-415f-a0ff-f4ba7861cd30"/>
+			</line>
+			<line>
+				<reportElement x="43" y="180" width="463" height="1" uuid="aa3b5dde-50f3-4eb9-a380-9e53ae0d702d"/>
+			</line>
+			<line>
+				<reportElement x="43" y="133" width="1" height="47" uuid="25467e34-fa75-4e4c-b186-b716a61d1411"/>
+			</line>
+			<line>
+				<reportElement x="506" y="133" width="1" height="48" uuid="81a6078d-7c5a-4799-97fc-68300f63755c"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="44" y="209" width="337" height="29" backcolor="#FAD461" uuid="abecc86e-8626-46b3-9dac-93ee76b7581d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SUFICIENCIA PATRIMONIAL REQUERIDA  PARA MOVIMIENTOS EN PESOS MEXICANOS]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement mode="Opaque" x="382" y="210" width="124" height="28" backcolor="#FAD461" uuid="85fe6af5-3a03-4515-9979-399ef97009d1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Double($P{SPR_MXP})]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="43" y="209" width="463" height="1" uuid="176949a5-e02c-4a22-9eb9-2eb732aaa8f4"/>
+			</line>
+			<line>
+				<reportElement x="43" y="238" width="464" height="1" uuid="1e601dd2-5582-4497-ac5c-3d382120ed3a"/>
+			</line>
+			<line>
+				<reportElement x="43" y="209" width="1" height="29" uuid="96096e92-cc76-424a-bc68-ecefef5e4912"/>
+			</line>
+			<line>
+				<reportElement x="506" y="209" width="1" height="29" uuid="6ec9ec75-e188-4c2f-bd68-8212a6ef5ccd"/>
+			</line>
+			<line>
+				<reportElement x="331" y="22" width="1" height="80" uuid="e7db4cdd-d964-44c4-8ec7-a147417f8f76"/>
+			</line>
+			<line>
+				<reportElement x="341" y="37" width="164" height="1" uuid="440f502a-09bc-47fc-92b6-f1eb19af1e96"/>
+			</line>
+			<line>
+				<reportElement x="341" y="53" width="164" height="1" uuid="4eb9e738-56c9-40d5-8769-60f71574263e"/>
+			</line>
+			<line>
+				<reportElement x="341" y="69" width="164" height="1" uuid="866adb6f-b50c-48b7-b635-2db781a8048c"/>
+			</line>
+			<line>
+				<reportElement x="342" y="85" width="163" height="1" uuid="1721913a-7046-48b7-a1fb-bf5117ee4ae0"/>
+			</line>
+			<staticText>
+				<reportElement x="44" y="165" width="337" height="15" uuid="520a1636-7aca-4328-be06-efeade15d5bf"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Honorarios Fiduciarios:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="381" y="134" width="1" height="46" uuid="11023293-5c26-4c31-b1db-cd35422aa830"/>
+			</line>
+			<line>
+				<reportElement x="382" y="149" width="124" height="1" uuid="5eca8e8b-bbfa-4339-9f72-9e56351da102"/>
+			</line>
+			<line>
+				<reportElement x="382" y="164" width="124" height="1" uuid="0a95ad3d-3894-414e-a831-a374e9c708fc"/>
+			</line>
+			<staticText>
+				<reportElement x="44" y="38" width="287" height="15" uuid="e3dc390e-2d7f-40ed-9d5e-681b4079cca8"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Traspasos de Bancomer a Otros Bancos]]></text>
+			</staticText>
+			<line>
+				<reportElement x="381" y="210" width="1" height="28" uuid="6a09e252-10ca-46fc-9b47-3f6864d59ddc"/>
+			</line>
+			<line>
+				<reportElement x="44" y="261" width="463" height="1" uuid="cc2cc865-0df9-4b1c-a716-0565b3fe74a7"/>
+			</line>
+			<staticText>
+				<reportElement x="44" y="262" width="288" height="15" uuid="7ac1f632-604b-4eb6-99ba-7f582546d07a"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Traspasos de Bancomer a Bancos Extranjeros]]></text>
+			</staticText>
+			<line>
+				<reportElement x="507" y="261" width="1" height="16" uuid="8ee5f021-3313-4e45-b8bd-80fa05be2b13"/>
+			</line>
+			<line>
+				<reportElement x="43" y="261" width="1" height="16" uuid="66f8a4c5-1a62-42ad-9b2c-e9cc0d0e63a7"/>
+			</line>
+			<line>
+				<reportElement x="381" y="261" width="1" height="16" uuid="59ce2403-67bb-47fe-b5cb-d36d7c93860a"/>
+			</line>
+			<textField pattern="#,##0.00">
+				<reportElement mode="Transparent" x="382" y="262" width="124" height="15" backcolor="#FFFFFF" uuid="b6e9be23-52cb-43ad-a21b-be2ed45a30a9"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Double($P{importe_M5})]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="43" y="277" width="465" height="1" uuid="d0d593ce-df48-4eee-8918-54d15abdd138"/>
+			</line>
+			<line>
+				<reportElement x="44" y="307" width="464" height="1" uuid="5a67517b-24ec-44c1-91b2-d0cdbcc80df7"/>
+			</line>
+			<line>
+				<reportElement x="43" y="347" width="464" height="1" uuid="fc23f80f-df24-442c-a4e6-187c488c7756"/>
+			</line>
+			<staticText>
+				<reportElement x="44" y="308" width="463" height="39" uuid="52269ea4-5ccd-4560-afee-6625bee17392"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[El importe de traspasos a Bancos Extranjeros es nominativo en moneda extranjera y se
+determinará el monto de afección al patrimonio fideicomitido en el momento en que se
+realicen las transacciones correspondientes al tipo de cambio vigente ese día.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="43" y="307" width="1" height="40" uuid="d152ac2d-9dba-44e5-82cf-cf200e319512"/>
+			</line>
+			<line>
+				<reportElement x="507" y="308" width="1" height="39" uuid="d7d227a5-f561-431f-88a2-1f23707f96c6"/>
+			</line>
+			<line>
+				<reportElement x="507" y="347" width="1" height="31" uuid="b26c68de-bf47-4319-bbaa-9b6345d834d5"/>
+			</line>
+			<line>
+				<reportElement x="43" y="378" width="465" height="1" uuid="b9e31d77-6baa-4ce9-bd4b-6beab776ef8a"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="44" y="348" width="338" height="30" backcolor="#FAD461" uuid="081e990e-50e5-48b6-b74a-8a46fe6908f2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SUFICIENCIA PATRIMONIAL REQUERIDA  PARA MOVIMIENTOS EN MONEDA EXTRANJERA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="43" y="348" width="1" height="30" uuid="c5f8c461-3b99-4131-9156-b748ef020a7d"/>
+			</line>
+			<line>
+				<reportElement x="382" y="348" width="1" height="30" uuid="70372123-17a9-4961-8174-7e6c7575a20a"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="383" y="348" width="124" height="30" backcolor="#FAD461" uuid="677e4c87-c734-4d32-b661-844a53f963f2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[POR
+DETERMINARSE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="381" y="22" width="1" height="80" uuid="2f9beb9a-8101-4c9a-89b0-5c79bd9f5413"/>
+			</line>
+			<line>
+				<reportElement x="332" y="262" width="1" height="15" uuid="871d481e-2d33-40eb-b62a-83899139dcaf"/>
+			</line>
+			<textField>
+				<reportElement x="332" y="22" width="49" height="15" uuid="d296cba2-0269-4a2a-a32d-49fda329d33f"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{total_movs_tipo1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="332" y="38" width="49" height="15" uuid="d1e76055-9184-422a-b3af-5c9968b558e3"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{total_movs_tipo2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="332" y="54" width="49" height="15" uuid="020502c9-930d-4d99-9da9-d96a03ed97d9"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{total_movs_tipo3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="332" y="70" width="49" height="15" uuid="a8ea7201-3a0c-48a6-a924-bb18df0768a5"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{total_movs_tipo4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="262" width="48" height="15" uuid="5d1462a4-a92e-46a9-98c3-e9fafe5eaea2"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{total_movs_tipo5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="44" y="86" width="287" height="17" uuid="dbc7f86d-d312-499b-9161-acd2b481f1df"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Total de Movimientos: "+$P{total_movimientos} + "    Importe Total en MXP: "]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="43" y="443" width="254" height="1" uuid="e81603b9-89fd-4458-8dbb-82de23f75c5d"/>
+			</line>
+			<staticText>
+				<reportElement x="44" y="427" width="253" height="16" uuid="526babec-7bbb-4d14-9f54-973773397b2f"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Generación de Transacciones:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="443" width="253" height="15" uuid="2d9c401d-c329-42bd-b3ee-11f285e624bb"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Recepción de Fondos:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="298" y="443" width="208" height="1" uuid="fc24d4ed-78a9-4b47-8415-4f5e95b927de"/>
+			</line>
+			<line>
+				<reportElement x="43" y="427" width="463" height="1" uuid="4b76ebad-682d-45cd-b56b-216678fbefad"/>
+			</line>
+			<line>
+				<reportElement x="43" y="474" width="463" height="1" uuid="71ef4a5f-df4a-4ed5-8d89-e098cf1b86a2"/>
+			</line>
+			<line>
+				<reportElement x="297" y="427" width="1" height="47" uuid="e842c7a0-2793-482c-94cf-0338e5c941e3"/>
+			</line>
+			<line>
+				<reportElement x="506" y="427" width="1" height="48" uuid="e0f3778d-7cdf-45a0-9816-beea6e996cd1"/>
+			</line>
+			<line>
+				<reportElement x="298" y="458" width="208" height="1" uuid="b2c58bfd-21b9-45bc-8858-fb1ab5e72eef"/>
+			</line>
+			<staticText>
+				<reportElement x="44" y="459" width="253" height="15" uuid="cef8ccbf-b3b6-4660-88d0-408ea068de1c"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Dispersión de Fondos:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="43" y="458" width="254" height="1" uuid="1d82dbcd-25b5-4130-b712-de5a9b7680a3"/>
+			</line>
+			<line>
+				<reportElement x="43" y="427" width="1" height="47" uuid="166cdc4b-a77a-42ca-91e9-9982ba175108"/>
+			</line>
+			<textField>
+				<reportElement x="317" y="428" width="188" height="16" uuid="7805ad4a-657c-4b7a-93a8-52700518f5ca"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_carga}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement x="410" y="0" width="145" height="20" uuid="f625bfea-8be5-4251-8645-42e66085a6db"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_hoy}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="54" y="0" width="213" height="20" uuid="2b0fdbc1-4aec-4f7b-97f8-c0172fbf04f3"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombre_archivo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

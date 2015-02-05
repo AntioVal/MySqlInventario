@@ -1,0 +1,81 @@
+/* 
+    Document   : Buscar
+    Created on : 23/01/2014, 10:25:51 AM
+    Author     : luis-valerio
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+
+.textInput{
+    font-size:16px;
+    font-family:arial;    
+    font-weight:bold;
+    border-radius: 3px;
+    
+}
+.tablaModificar{
+    
+    border-radius: 5px;
+    background-color: #f2dcb4;
+    font-size:16px;
+    font-family:arial;
+    padding: 10px 10px 10px 10px;
+    font-weight:bold;
+    
+    
+}.tablaModificar input[type="text"]:disabled{
+        border:1px solid #ff8282; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;font-size:16px;
+        font-family:arial; padding: 3px 3px 3px 3px; text-decoration:none; display:inline-block; color: #000000;
+        background-color: #f2dcb4;
+
+}.tablaModificar input[type="text"]:enabled{
+        border:1px solid #ff8282; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;font-size:16px;
+        font-family:arial; padding: 3px 3px 3px 3px; text-decoration:none; display:inline-block;font-weight:bold; color: #000000;
+        background-color: #ffffff;
+
+}
+
+
+.buttonModificar{
+/*border:1px solid #ff8282; -webkit-border-radius: 10px; -moz-border-radius: 10px;border-radius: 10px;font-size:14px;
+font-family:arial; padding: 5px 5px 5px 5px; text-decoration:none; display:inline-block;font-weight:bold; color: #000000;
+background-color: #ef90a0;*/
+    border-radius: 4px;
+    border:1px solid #bfcfff;
+    font-family: Cambria;
+    font-size: 16px;
+    font-weight:bold;
+    padding: 2px;
+    color: #000000;
+    border-style: groove;
+    background-color: #e9e1e9;
+        text-decoration:none;
+
+}
+
+.buttonModificar:hover{
+ border:1px solid #cf8080;
+ background-color: #cf7565;
+}
+
+.msgErr{
+-webkit-border-radius: 2px; 
+-moz-border-radius: 2px;
+border-radius: 2px;
+font-size:12px;
+font-family:arial; padding: 10px 10px 10px 10px; 
+display:inline-block;font-weight:bold; color: #000000;
+background: #ffff66;
+}
+
+.TituloModificar{
+    font-family: Cambria;
+    font-size:24px;
+    color: #aa0000;
+    font-weight:bold;
+}
